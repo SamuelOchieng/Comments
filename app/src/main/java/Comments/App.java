@@ -13,7 +13,8 @@ public class App {
 
     public static void main(String[] args) throws IOException {
         var filePath = "C:/Users/lenovo/OneDrive/Documents/NetBeansProjects/Comments/app/src/main/java/Comments/App.java";
-        BufferedReader br = new BufferedReader(new FileReader(filePath));
+       try {
+       BufferedReader br = new BufferedReader(new FileReader(filePath));
         String line;
 // comment
         while ((line = br.readLine()) != null) {
@@ -25,6 +26,9 @@ public class App {
         }
 
         br.close();
+    } catch (IOException e) {
+          System.err.println("Error reading the file: +e.getMessage());
+       }
     }
 
     private static boolean isComment(String line) {
