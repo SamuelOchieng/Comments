@@ -12,25 +12,29 @@ public class App {
    
 
     public static void main(String[] args) throws IOException {
+       // Define the file path
         var filePath = "C:/Users/lenovo/OneDrive/Documents/NetBeansProjects/Comments/app/src/main/java/Comments/App.java";
        try {
+      // Create a BufferedReader to read the file
        BufferedReader br = new BufferedReader(new FileReader(filePath));
         String line;
 // comment
         while ((line = br.readLine()) != null) {
             if (isComment(line)) {
+               // Print if the line is a comment
                 System.out.println("This is a Comment: " + line);
             } else {
+               // Print if the line is not a comment
                 System.out.println("Not a comment: " + line);
             }
         }
-
+        // Close the BufferedReader
         br.close();
     } catch (IOException e) {
           System.err.println("Error reading the file: +e.getMessage());
        }
     }
-
+   // Check if a given line is a comment
     private static boolean isComment(String line) {
         line = line.trim();
         return line.startsWith("//") || line.startsWith("/*");
